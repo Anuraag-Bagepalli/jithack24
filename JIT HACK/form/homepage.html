@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    .header {
+      position: fixed;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-image: url('logo.png');
+      background-repeat: no-repeat;
+      background-position: right top;
+      background-size: 50px auto;
+    }
+    .navbar {
+      display: flex;
+      justify-content: center;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    .navbar li {
+      margin: 0 20px;
+    }
+    .navbar a {
+      color: #ffffff;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+    .navbar a:hover {
+      color: #ffffff;
+    }
+    .parallax {
+      background-image: url('bg image 3.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      position: relative;
+      z-index: 0;
+      background-color: black;
+    }
+    .content {
+      padding:20px;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .overlay-text {
+      position: absolute;
+      top: 50%;
+      left: 35%;
+      transform: translate(-50%, -50%);
+      font-size: 30px;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    h2 {
+    animation-duration: 8s;
+    animation-name: slidein;
+    animation-iteration-count: infinite;
+}
+
+@keyframes slidein {
+  0% {
+    margin-left: 0%;
+  }
+  50% {
+    margin-left: 300px;
+  }
+  100% {
+    margin-left: 0%;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <ul class="navbar">
+    <li><a href="index.html#home">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li>
+        <!-- Modified to include a form that will post to the specified URL -->
+        <form action="http://localhost/form/index.php" method="post">
+          <button type="submit" name="signUp">Sign Up</button>
+        </form>
+      </li>
+  </ul>
+</div>
+
+<div class="parallax" id="home">
+  <div class="content">
+    <h1>WELCOME TO SUBSIFY</h1>
+  </div>
+  <div class="overlay-text">
+    <h2>Manage Your Subscriptions</h2>
+  </div>
+</div>
+
+<div class="content" id="about">
+  <h2>About Us</h2>
+</div>
+
+<div class="parallax" id="subscriptions">
+  <div class="overlay-text">
+    <h1>All Your Subscriptions<br> In One Place.</h1>
+    </div>
+    </div>
+</div>
+
+<div class="content" id="contact">
+  <h2>Contact Us</h2>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTT Platforms Subscription Manager</title>
+    <link rel="stylesheet" href="mainpage.css">
+</head>
+<body>
+    <div class="container">
+        <h1>OTT Platforms Subscription Manager</h1>
+        <div class="tabs">
+            <button class="tab-button" onclick="openTab('netflix')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Netflix_logo.svg" alt="Netflix" class="logo">
+            </button>
+            <button class="tab-button" onclick="openTab('Jio')">
+                <img src="jio.png" alt="Jio" class="logo">
+            </button>
+            <button class="tab-button" onclick="openTab('amazon')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png" alt="Amazon Prime" class="logo">
+            </button>
+            <button class="tab-button" onclick="openTab('disney')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg" alt="Disney+" class="logo">
+            </button>
+            <button class="tab-button" onclick="openTab('sunnxt')">
+                <img src="SunNXT.webp" alt="sunnxt" class="logo">
+            </button>
+            <button class="tab-button" onclick="openTab('sonyliv')">
+                <img src="sonyliv.png" alt="sonyliv" class="logo">
+            </button>
+            <button class="tab-button" onclick="openTab('zee5')">
+                <img src="zee5.png" alt="zee5" class="logo">
+            </button>
+        </div>
+
+        <div id="netflix" class="tab-content">
+            <h2><img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Netflix_logo.svg" alt="Netflix" class="content-logo"> Netflix Subscription</h2>
+            <p id="netflix-status">PLAN STATUS: <span class="status-text"></span></p>
+            <p>VALIDITY: <input type="date" id="netflix-start"> to <input type="date" id="netflix-end" oninput="updateStatus('netflix')"></p>
+            <p id="netflix-renew">RENEW: <span class="renew-text"></span></p>
+            <button class="delete-button" onclick="deleteSubscription('netflix')">Cancel Subscription</button>
+        </div>
+        <div id="Jio" class="tab-content">
+            <h2><img src="jio.png" alt="Jio" class="content-logo"> Jio Subscription</h2>
+            <p id="jio-status">PLAN STATUS: <span class="status-text"></span></p>
+            <p>VALIDITY: <input type="date" id="jio-start"> to <input type="date" id="jio-end" oninput="updateStatus('jio')"></p>
+            <p id="jio-renew">RENEW: <span class="renew-text"></span></p>
+            <button class="delete-button" onclick="deleteSubscription('Jio')">Cancel Subscription</button>
+        </div>
+        <div id="amazon" class="tab-content">
+            <h2><img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png" alt="Amazon Prime" class="content-logo"> Amazon Prime Subscription</h2>
+            <p id="amazon-status">PLAN STATUS: <span class="status-text"></span></p>
+            <p>VALIDITY: <input type="date" id="amazon-start"> to <input type="date" id="amazon-end" oninput="updateStatus('amazon')"></p>
+            <p id="amazon-renew">RENEW: <span class="renew-text"></span></p>
+            <button class="delete-button" onclick="deleteSubscription('amazon')">Cancel Subscription</button>
+        </div>
+        <div id="disney" class="tab-content">
+            <h2><img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg" alt="Disney+" class="content-logo"> Disney+ Subscription</h2>
+            <p id="disney-status">PLAN STATUS: <span class="status-text"></span></p>
+            <p>VALIDITY: <input type="date" id="disney-start"> to <input type="date" id="disney-end" oninput="updateStatus('disney')"></p>
+            <p id="disney-renew">RENEW: <span class="renew-text"></span></p>
+            <button class="delete-button" onclick="deleteSubscription('disney')">Cancel Subscription</button>
+        </div>
+        <div id="sunnxt" class="tab-content">
+            <h2><img src="SunNXT.webp" alt="sunnxt" class="content-logo"> sunnxt Subscription</h2>
+            <p id="sunnxt-status">PLAN STATUS: <span class="status-text"></span></p>
+            <p>VALIDITY: <input type="date" id="sunnxt-start"> to <input type="date" id="sunnxt-end" oninput="updateStatus('sunnxt')"></p>
+            <p id="sunnxt-renew">RENEW: <span class="renew-text"></span></p>
+            <button class="delete-button" onclick="deleteSubscription('sunnxt')">Cancel Subscription</button>
+        </div>
+        <div id="sonyliv" class="tab-content">
+            <h2><img src="sonyliv.png" alt="sonyliv" class="content-logo"> sonyliv Subscription</h2>
+            <p id="sonyliv-status">PLAN STATUS: <span class="status-text"></span></p>
+            <p>VALIDITY: <input type="date" id="sonyliv-start"> to <input type="date" id="sonyliv-end" oninput="updateStatus('sonyliv')"></p>
+            <p id="sonyliv-renew">RENEW: <span class="renew-text"></span></p>
+            <button class="delete-button" onclick="deleteSubscription('sonyliv')">Cancel Subscription</button>
+        </div>
+        <div id="zee5" class="tab-content">
+            <h2><img src="zee5.png" alt="zee5" class="content-logo"> zee5 Subscription</h2>
+            <p id="zee5-status">PLAN STATUS: <span class="status-text"></span></p>
+            <p>VALIDITY: <input type="date" id="zee5-start"> to <input type="date" id="zee5-end" oninput="updateStatus('zee5')"></p>
+            <p id="zee5-renew">RENEW: <span class="renew-text"></span></p>
+            <button class="delete-button" onclick="deleteSubscription('zee5')">Cancel Subscription</button>
+        </div>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            event.currentTarget.className += " active";
+        }
+
+        function deleteSubscription(tabName) {
+            var confirmation = confirm("Are you sure you want to cancel the " + tabName + " subscription?");
+            if (confirmation) {
+                document.getElementById(tabName).innerHTML = "<h2>Subscription Canceled</h2><p>Your " + tabName + " subscription has been canceled.</p>";
+            }
+        }
+
+        function updateStatus(tabName) {
+            var endDate = new Date(document.getElementById(tabName + "-end").value);
+            var statusText = document.querySelector("#" + tabName + "-status .status-text");
+            var renewText = document.querySelector("#" + tabName + "-renew .renew-text");
+            var currentDate = new Date();
+
+            var renewLinks = {
+                "netflix": "https://www.netflix.com/in/",
+                "Jio": "https://www.jio.com/",
+                "amazon": "https://www.primevideo.com",
+                "disney": "https://www.disneyplus.com",
+                "sunnxt": "https://www.sunnxt.com/subscribe",
+                "sonyliv": "https://www.sonyliv.com/subscribe",
+                "zee5": "https://www.zee5.com"
+            };
+
+            if (endDate >= currentDate) {
+                statusText.textContent = "Active";
+                statusText.style.color = "green";
+                renewText.textContent = "Plan already active";
+            } else {
+                statusText.textContent = "Expired";
+                statusText.style.color = "red";
+                renewText.innerHTML = '<a href="' + renewLinks[tabName] + '" target="_blank">Renew Subscription</a>';
+            }
+
+            // Send the updated dates to the server
+            var startDate = document.getElementById(tabName + "-start").value;
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "mainpage.php?action=update", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.log(xhr.responseText);
+                }
+            };
+            xhr.send("platform=" + tabName + "&start_date=" + startDate + "&end_date=" + document.getElementById(tabName + "-end").value);
+        }
+
+        // Set default tab to open
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector(".tab-button").click();
+        });
+    </script>
+    <script src="mainpage.php"></script>
+</body>
+</html>
+

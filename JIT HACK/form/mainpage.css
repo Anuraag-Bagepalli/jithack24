@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0d0d0d;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+    background: #0d0c0e;
+    box-shadow: 0 0 10px rgba(183, 12, 12, 0.1);
+    margin-top: 50px;
+}
+
+h1 {
+    text-align: center;
+    color: #a00808f7;
+}
+
+.tabs {
+    display: flex;
+    border-style: groove;
+    border: 3px groove #596705; 
+    margin-bottom: 20px;
+    justify-content: center;
+    padding: 0;
+}
+
+.tab-button {
+    background: #e3e1e2c5;
+    border: none;
+    outline: none;
+    padding: 10px 30px;
+    cursor: pointer;
+    transition: background 0.3s;
+    flex-grow: 1; 
+    text-align: center;  
+    border-right: 1px solid #f19408;
+}
+
+.tab-button:hover {
+    background: #101010;
+}
+
+.tab-button.active {
+    background: #0e0618;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content h2 {
+    color: #fcf9f9;
+    display: flex;
+    align-items: center;
+}
+
+.tab-content p {
+    color: #f6f6fa;
+}
+
+.tab-content input[type="date"] {
+    background: #2c2b2b;
+    color: #fcf9f9;
+    border: 1px solid #a00808f7;
+    padding: 5px;
+    border-radius: 3px;
+    margin-left: 10px;
+}
+
+.tab-content input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+.logo, .content-logo {
+    width: 50px;
+    height: auto;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.delete-button {
+    background: #ff4d4d;
+    color: rgb(253, 250, 250);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.delete-button:hover {
+    background: #f4e7e7;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 10px;
+    }
+    
+    .tab-button {
+        padding: 10px 20px;
+    }
+}
